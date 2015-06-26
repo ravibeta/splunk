@@ -1,0 +1,52 @@
+{% extends "splunkdj:base_with_account_bar.html" %}
+
+{% load splunkmvc %}
+
+{% block title %}{{app_name}} Home Page{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+
+    <style>        
+        .main-area {
+            margin: 0px auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 10px;
+            width: 300px;
+        }    
+    </style>
+{% endblock css %}
+
+{% block content %}
+
+    <div>
+        <div class="main-area">
+             <p>Welcome to your very own log store that you can create in Splunk for all your log files using this application. The objective is for you to create your own private index where you can flow your log files to and share it only with those you want to. We explain the workflow required to achieve this and the tools are available with the navigational links below. </p>
+             <p> The workflow consists of the steps enumerated below.
+             You should be able to :
+            <ol>
+            <li>create your own index <a href="{% url 'SplunkAppPrivateIndex:splunk' %}">List</a> (using this application)</li>
+            <li>create an LDAP security group (by raising a ticket with your ServiceDesk)</li>
+            <li>create a role <a href="{% url 'SplunkAppPrivateIndex:roles' %}">List</a> (using this application)</li>
+            <li>add the index to this role (using this application)</li>
+            <li>map an LDAP group to a role (using Splunk)</li>
+            </ol>
+             If you would rather let the application provision it in oneshot, click <a href="{% url 'SplunkAppPrivateIndex:securedindex' %}">here</a>
+            </p>
+            <p>
+            </p>
+<!--
+            <p>Template message: {{message}}</p>
+            <p class="muted">You should also look in the JavaScript console...</p>
+-->
+        </div>
+    </div>
+
+{% endblock content%}
+
+{% block js %}    
+    <script>
+        console.log("Custom JavaScript Goes Here (look in your template)!");
+    </script>
+{% endblock js %}

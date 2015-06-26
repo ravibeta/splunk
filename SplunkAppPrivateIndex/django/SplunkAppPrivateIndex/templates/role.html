@@ -1,0 +1,42 @@
+{% extends "splunkdj:base_with_app_bar.html" %}
+
+{% load splunkmvc %}
+
+{% block title %}{{app_name}} This page displays the role created with the /mystores/create?role=your_role_name URI. {% endblock title %}
+
+{% block css %}
+    <!-- Style sheets are loaded here -->
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}splunkjs/css/dashboard.css" />
+    <style>
+        /* Define any page styles here*/
+    </style>
+{% endblock css %}
+
+    {% block content %}
+
+        <ul>
+         {{msg}}
+         {% if role  %}
+        <label>Role name specified: {{role.name}}</label>
+        Role creation status:
+         <a href="https://10.5.184.254:8089/services/authorization/roles/{{role.name}}">https://10.5.188.49:8089/services/authorization/roles/{{role.name}}</a> Created.
+         Role can be deleted with : http://10.5.184.254:8000/dj/en-us/myitcloudindex/myroles/delete/?role=your_role_name
+         {% else %}
+         You have not specified an Role name or the role was not created.
+         {% endif %}
+        </ul>
+        <p>
+        Click <a href="{% url 'SplunkAppPrivateIndex:home' %}">here</a> to return home.
+        </p>
+           <p>
+           </p>
+    {% endblock content %}
+
+{% block managers %}
+    {# Search managers go here #}
+{% endblock managers %}
+
+{% block js %}
+    {# JavaScript goes here #}
+{% endblock js %}

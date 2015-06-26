@@ -1,0 +1,32 @@
+{% extends "splunkdj:base_with_app_bar.html" %}
+
+{% load splunkmvc %}
+
+{% block title %}{{app_name}} This page displays the index created with the /mystores/create?index=your_index_name URI. {% endblock title %}
+
+{% block css %}
+    <!-- Style sheets are loaded here -->
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}{{app_name}}/custom.css" />
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}splunkjs/css/dashboard.css" />
+    <style>
+        /* Define any page styles here*/
+    </style>
+{% endblock css %}
+
+    {% block content %}
+        Create your own index which is private to the AD security group and Splunk role you define by specifying the following:
+<form action='/dj/en-us/SplunkAppPrivateIndex/ezIndex/' method='post'>{% csrf_token %}
+{{ form.as_p }}
+<input type='submit' value='Submit' />
+</form>
+           <p>
+           </p>
+    {% endblock content %}
+
+{% block managers %}
+    {# Search managers go here #}
+{% endblock managers %}
+
+{% block js %}
+    {# JavaScript goes here #}
+{% endblock js %}
