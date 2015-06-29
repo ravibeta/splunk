@@ -20,4 +20,4 @@ The landing page describes the workflow to create a private index.
 There is a link on that page that automates it for you by taking a name for the following:
 - a Splunk index
 - a Splunk role to use with the index
-- an AD security group that manages the index
+- an AD security group that maps to this role
