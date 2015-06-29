@@ -265,7 +265,7 @@ def securedindex_form_process(request):
            existingIndex = None
            if indexname in service.indexes and service.indexes[indexname]:
               existingIndex = service.indexes[indexname]
-           if not existingIndex:
+           if existingIndex == None:
               index = indexes.create(indexname)
               if index:
                  import splunklib.client
